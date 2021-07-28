@@ -1,7 +1,7 @@
 {
-  "name": "New-task-of-course",
+  "name": "todo-list",
   "version": "1.0.0",
-  "description": "New task",
+  "description": "react-todo-list",
   "private": true,
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --mode production",

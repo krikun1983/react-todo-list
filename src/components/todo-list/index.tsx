@@ -1,16 +1,15 @@
 import React from 'react';
 import uuid from 'react-uuid';
+import { ListItemProps, TodoListProps } from '../../types/list-item';
 import TodoListItem from './todo-list-item';
 
-const TodoList = (): JSX.Element => {
-  const items = ['Learn React', 'Build Awesome App'];
-
+const TodoList = ({ todos }: TodoListProps): JSX.Element => {
   return (
     <ul>
-      {items.map((item: string, index: number) => {
+      {todos.map((item: ListItemProps) => {
         return (
           <li key={uuid()}>
-            <TodoListItem label={item} important={index === 1} />
+            <TodoListItem {...item} />
           </li>
         );
       })}

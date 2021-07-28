@@ -1,9 +1,5 @@
 import React from 'react';
-
-type ListItemProps = {
-  label: string;
-  important: boolean;
-};
+import { ListItemProps } from '../../../types/list-item';
 
 const TodoListItem = ({ label, important = false }: ListItemProps): JSX.Element => {
   const style = {

@@ -5,10 +5,10 @@ import TodoListItem from './todo-list-item';
 
 const TodoList = ({ todos }: TodoListProps): JSX.Element => {
   return (
-    <ul>
+    <ul className="list-group">
       {todos.map((item: ListItemProps) => {
         return (
-          <li key={uuid()}>
+          <li className="list-group-item" key={uuid()}>
             <TodoListItem {...item} />
           </li>
         );

@@ -1,0 +1,22 @@
+.list-group {
+  margin: 10px 0;
+
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+}
+
+.item {
+  color: black;
+  font-weight: normal;
+
+  &-important {
+    color: #0487ab;
+    font-weight: bold;
+  }
+}

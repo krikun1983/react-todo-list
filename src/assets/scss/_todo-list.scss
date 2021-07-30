@@ -20,3 +20,50 @@
     font-weight: bold;
   }
 }
+
+
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+  svg {
+    width: 75%;
+    height: 75%;
+  }
+}
+
+.btn-outline-success {
+  margin-right: 10px;
+  border: 1px solid red;
+  fill: #ff0800;
+
+  &:hover {
+    fill: #fff;
+    border: 1px solid #0487ab;
+    background-color: #0487ab;
+  }
+}
+
+.btn-outline-danger {
+  border: 1px solid green;
+  fill: #00a550;
+
+  &:hover {
+    fill: #fff;
+    border: 1px solid #0487ab;
+    background-color: #0487ab;
+  }
+}

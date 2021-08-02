@@ -4,11 +4,13 @@
   "description": "react-todo-list",
   "private": true,
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "build": "npm run lint && cross-env NODE_ENV=production webpack --mode production",
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "start": "cross-env NODE_ENV=development webpack serve --mode development",
     "lint:fix": "eslint src --fix",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "stylelint": "stylelint '**/*{.css,.scss}'",
+    "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix"
   },
   "husky": {
     "hooks": {
@@ -43,6 +45,14 @@
     "prettier": "^2.3.2",
     "sass": "^1.36.0",
     "sass-loader": "^12.1.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-prettier": "^1.2.0",
+    "stylelint-scss": "^3.20.1",
     "ts-loader": "^9.2.4",
     "typescript": "^4.3.5",
     "webpack": "^5.46.0",

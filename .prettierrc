@@ -9,5 +9,10 @@
   "jsxBracketSameLine": false,
   "arrowParens": "avoid",
   "proseWrap": "always",
-  "endOfLine": "crlf"
+  "endOfLine": "crlf",
+  "cssEnable": [
+    "css",
+    "less",
+    "sass"
+  ],
 }

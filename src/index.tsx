@@ -7,11 +7,7 @@ import './assets/scss/app.scss';
 import ItemStatusFilter from './components/item-status-filter';
 
 const App = (): JSX.Element => {
-  const todoData = [
-    { label: 'Learn React', important: false },
-    { label: 'Make Awesome App', important: true },
-    { label: 'Drink coffee', important: false },
-  ];
+  const todoData = [{ label: 'Learn React' }, { label: 'Make Awesome App' }, { label: 'Drink coffee' }];
 
   return (
     <div className="todo-app">

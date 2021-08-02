@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ListItemProps } from '../../../types/list-item';
 
-const TodoListItem = ({ label, important = false }: ListItemProps): JSX.Element => {
+type ItemState = {
+  done?: boolean;
+  important?: boolean;
+};
+
+const TodoListItem = ({ label }: ListItemProps): JSX.Element => {
+  const [item, setItem] = useState<ItemState>({ done: false, important: false });
+
+  const onLabelClick = () => {
+    setItem(({ done, important }) => {
+      return {
+        done: !done,
+        important,
+      };
+    });
+  };
+
+  const onMarkImportant = () => {
+    setItem(({ done, important }) => {
+      return {
+        done,
+        important: !important,
+      };
+    });
+  };
+
   return (
     <>
-      <span className={`${important ? 'item-important' : 'item'}`}>{label}</span>
+      <span
+        className={`${item.important ? 'item-important' : 'item'} ${item.done ? 'done' : ''}`}
+        onClick={onLabelClick}
+        role="presentation"
+      >
+        {label}
+      </span>
       <div className="btns">
         <button type="button" className="btn btn-outline-success">
           <svg role="img" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg">
@@ -18,7 +49,7 @@ const TodoListItem = ({ label, important = false }: ListItemProps): JSX.Element 
             />
           </svg>
         </button>
-        <button type="button" className="btn btn-outline-danger">
+        <button type="button" className="btn btn-outline-danger" onClick={onMarkImportant}>
           <svg role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
             <path
               d="m 7.0157956,12 c -0.56859,0 -1.02951,-0.46096 -1.02951,-1.02955 0,-0.56851

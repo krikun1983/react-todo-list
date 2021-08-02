@@ -21,7 +21,6 @@
   }
 }
 
-
 .btns {
   display: flex;
   align-items: center;
@@ -32,12 +31,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   width: 30px;
   height: 30px;
   background-color: transparent;
   border: 1px solid #ccc;
   border-radius: 4px;
+  cursor: pointer;
 
   svg {
     width: 75%;
@@ -51,9 +50,9 @@
   fill: #ff0800;
 
   &:hover {
-    fill: #fff;
-    border: 1px solid #0487ab;
     background-color: #0487ab;
+    border: 1px solid #0487ab;
+    fill: #fff;
   }
 }
 
@@ -62,8 +61,12 @@
   fill: #00a550;
 
   &:hover {
-    fill: #fff;
-    border: 1px solid #0487ab;
     background-color: #0487ab;
+    border: 1px solid #0487ab;
+    fill: #fff;
   }
+}
+
+.done {
+  text-decoration: line-through;
 }

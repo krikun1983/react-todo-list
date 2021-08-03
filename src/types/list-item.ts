@@ -1,7 +1,8 @@
-export type ListItemProps = {
+export interface TodoListItemProps {
   label: string;
-};
+  id: number;
+}
 
-export type TodoListProps = {
-  todos: ListItemProps[];
-};
+export interface TodoListProps {
+  todos: TodoListItemProps[];
+}

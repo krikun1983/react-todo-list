@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { ListItemProps } from '../../../types/list-item';
+import { TodoListItemProps } from '../../../types/list-item';
 
 type ItemState = {
   done?: boolean;
   important?: boolean;
 };
 
-const TodoListItem = ({ label }: ListItemProps): JSX.Element => {
+const TodoListItem = ({ label }: TodoListItemProps): JSX.Element => {
   const [item, setItem] = useState<ItemState>({ done: false, important: false });
 
   const onLabelClick = () => {

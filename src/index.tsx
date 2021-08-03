@@ -5,16 +5,23 @@ import SearchPanel from './components/search-panel';
 import TodoList from './components/todo-list';
 import './assets/scss/app.scss';
 import ItemStatusFilter from './components/item-status-filter';
+import { TodoListItemProps } from './types/list-item';
 
 const App = (): JSX.Element => {
-  const [todoData, setTodoData] = useState([
+  const todoData = [
     { label: 'Learn React', id: 1 },
     { label: 'Make Awesome App', id: 2 },
     { label: 'Drink coffee', id: 3 },
-  ]);
+  ];
+
+  const [items, setItems] = useState<TodoListItemProps[]>(todoData);
 
   const deleteTodoListItem = (id: number) => {
-    console.log(id);
+    setItems(
+      items.filter(item => {
+        return item.id !== id;
+      }),
+    );
   };
 
   return (
@@ -24,7 +31,7 @@ const App = (): JSX.Element => {
         <SearchPanel />
         <ItemStatusFilter />
       </div>
-      <TodoList todos={todoData} onDeleted={deleteTodoListItem} />
+      <TodoList todos={items} onDeleted={deleteTodoListItem} />
     </div>
   );
 };

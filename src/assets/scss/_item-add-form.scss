@@ -1,4 +1,7 @@
 .item-add-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 10px;
 
   &__btn {
@@ -13,5 +16,15 @@
       color: #fff;
       background-color: #0487ab;
     }
+  }
+
+  &__control {
+    width: 82%;
+    height: 33px;
+    margin-right: 10px;
+    padding: 5px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 4px;
   }
 }

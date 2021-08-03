@@ -6,6 +6,9 @@ import TodoList from './components/todo-list';
 import './assets/scss/app.scss';
 import ItemStatusFilter from './components/item-status-filter';
 import { TodoListItemProps } from './types/list-item';
+import ItemAddForm from './components/item-add-form';
+
+let idMax = 10;
 
 const App = (): JSX.Element => {
   const todoData = [
@@ -24,6 +27,15 @@ const App = (): JSX.Element => {
     );
   };
 
+  const addTodoListItem = (text: string) => {
+    const newItem = {
+      label: text,
+      id: (idMax += 1),
+    };
+
+    setItems(state => [...state, newItem]);
+  };
+
   return (
     <div className="todo-app">
       <AppHeader toDo={1} done={3} />
@@ -32,6 +44,7 @@ const App = (): JSX.Element => {
         <ItemStatusFilter />
       </div>
       <TodoList todos={items} onDeleted={deleteTodoListItem} />
+      <ItemAddForm onAddTodolistItem={addTodoListItem} />
     </div>
   );
 };

@@ -1,0 +1,17 @@
+.item-add-form {
+  margin-top: 10px;
+
+  &__btn {
+    padding: 8px 12px;
+    color: #0487ab;
+    background-color: #fff;
+    border: 1px solid #0487ab;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+      background-color: #0487ab;
+    }
+  }
+}

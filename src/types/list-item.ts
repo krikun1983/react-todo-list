@@ -11,3 +11,7 @@ export interface TodoListProps {
   todos: TodoListItemProps[];
   onDeleted: (id: number) => void;
 }
+
+export interface AddTodolistItemFuncProps {
+  onAddTodolistItem: (text: string) => void;
+}

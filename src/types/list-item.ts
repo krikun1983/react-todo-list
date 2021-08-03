@@ -22,3 +22,7 @@ export interface TodoListProps {
 export interface AddTodolistItemFuncProps {
   onAddTodolistItem: (text: string) => void;
 }
+
+export type OnSearchChangeFuncProps = {
+  onSearchChange: (term: string) => void;
+};

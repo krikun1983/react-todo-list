@@ -28,6 +28,7 @@ const App = (): JSX.Element => {
   ];
 
   const [items, setItems] = useState<TodoListItemProps[]>(todoData);
+  const [tern, setTern] = useState('');
 
   const deleteTodoListItem = (id: number) => {
     setItems(
@@ -63,18 +64,41 @@ const App = (): JSX.Element => {
     });
   };
 
+  const searchChange = (term: string) => {
+    setTern(term);
+  };
+
   const doneCount = items.filter(item => item.done).length;
   const todoCount = items.length - doneCount;
+
+  const allTodoListItem = () => {
+    return items.filter(item => item);
+  };
+
+  const activeTodoListItem = () => {
+    return items.filter(item => item.done === false);
+  };
+
+  const search = (arr: TodoListItemProps[], text: string) => {
+    if (!text.length) {
+      return arr;
+    }
+    return arr.filter(item => {
+      return item.label.toLowerCase().indexOf(text.toLowerCase()) > -1;
+    });
+  };
+
+  const visibleItem = search(items, tern);
 
   return (
     <div className="todo-app">
       <AppHeader toDo={todoCount} done={doneCount} />
       <div className="top-panel">
-        <SearchPanel />
-        <ItemStatusFilter />
+        <SearchPanel onSearchChange={searchChange} />
+        <ItemStatusFilter onActiveTodoListItem={activeTodoListItem} onAllTodoListItem={allTodoListItem} />
       </div>
       <TodoList
-        todos={items}
+        todos={visibleItem}
         onDeleted={deleteTodoListItem}
         onToggleDone={onToggleDone}
         onToggleImportant={onToggleImportant}

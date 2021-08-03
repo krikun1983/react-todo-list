@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import AppHeader from './components/app-header';
 import SearchPanel from './components/search-panel';
@@ -7,11 +7,15 @@ import './assets/scss/app.scss';
 import ItemStatusFilter from './components/item-status-filter';
 
 const App = (): JSX.Element => {
-  const todoData = [
+  const [todoData, setTodoData] = useState([
     { label: 'Learn React', id: 1 },
     { label: 'Make Awesome App', id: 2 },
     { label: 'Drink coffee', id: 3 },
-  ];
+  ]);
+
+  const deleteTodoListItem = (id: number) => {
+    console.log(id);
+  };
 
   return (
     <div className="todo-app">
@@ -20,7 +24,7 @@ const App = (): JSX.Element => {
         <SearchPanel />
         <ItemStatusFilter />
       </div>
-      <TodoList todos={todoData} onDeleted={id => console.log('del', id)} />
+      <TodoList todos={todoData} onDeleted={deleteTodoListItem} />
     </div>
   );
 };

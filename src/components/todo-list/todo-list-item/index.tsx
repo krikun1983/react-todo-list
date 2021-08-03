@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { TodoListItemProps } from '../../../types/list-item';
+import { TodoListItemFuncProps } from '../../../types/list-item';
 
 type ItemState = {
   done?: boolean;
   important?: boolean;
 };
 
-const TodoListItem = ({ label }: TodoListItemProps): JSX.Element => {
+const TodoListItem = ({ label, onDeleted }: TodoListItemFuncProps): JSX.Element => {
   const [item, setItem] = useState<ItemState>({ done: false, important: false });
 
   const onLabelClick = () => {
@@ -37,7 +37,7 @@ const TodoListItem = ({ label }: TodoListItemProps): JSX.Element => {
         {label}
       </span>
       <div className="btns">
-        <button type="button" className="btn btn-outline-success">
+        <button type="button" className="btn btn-outline-success" onClick={onDeleted}>
           <svg role="img" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M832 864v576q0 14-9 23t-23 9h-64q-14 0-23-9t-9-23v-576q0-14 9-23t23-9h64q14 0 23 9t9 23zm256 0v576q0

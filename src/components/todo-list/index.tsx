@@ -2,13 +2,14 @@ import React from 'react';
 import { TodoListItemProps, TodoListProps } from '../../types/list-item';
 import TodoListItem from './todo-list-item';
 
-const TodoList = ({ todos }: TodoListProps): JSX.Element => {
+const TodoList = ({ todos, onDeleted }: TodoListProps): JSX.Element => {
   return (
     <ul className="list-group">
       {todos.map((item: TodoListItemProps) => {
+        const { id } = item;
         return (
-          <li className="list-group-item" key={item.id}>
-            <TodoListItem {...item} />
+          <li className="list-group-item" key={id}>
+            <TodoListItem {...item} onDeleted={() => onDeleted(id)} />
           </li>
         );
       })}

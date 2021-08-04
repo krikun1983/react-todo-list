@@ -30,4 +30,5 @@ export type OnSearchChangeFuncProps = {
 export type ItemStatusFilterProps = {
   filter: string;
   onFilterChange: (text: string) => void;
+  onSortTodoListItem: () => void;
 };

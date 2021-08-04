@@ -10,9 +10,11 @@
   border-radius: 4px;
   cursor: pointer;
 
-  &:hover {
-    color: #fff;
-    background-color: #0487ab;
+  @media screen and(min-width: 640px) {
+    &:hover {
+      color: #fff;
+      background-color: #0487ab;
+    }
   }
 
   @media screen and (max-width: 480px) {

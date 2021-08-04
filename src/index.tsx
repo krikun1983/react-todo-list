@@ -6,7 +6,7 @@ import TodoList from './components/todo-list';
 import ItemStatusFilter from './components/item-status-filter';
 import { TodoListItemProps } from './types/list-item';
 import ItemAddForm from './components/item-add-form';
-import { createTodoListItem, filters, search, toggleProperty } from './utils';
+import { createTodoListItem, filters, search, sortItems, toggleProperty } from './utils';
 import todoData from './constants/todo-data';
 import './assets/scss/app.scss';
 
@@ -14,6 +14,11 @@ const App = (): JSX.Element => {
   const [items, setItems] = useState<TodoListItemProps[]>(todoData);
   const [tern, setTern] = useState('');
   const [filter, setFilter] = useState('all');
+  const [updateTodoList, setUpdateTodoList] = useState(false);
+
+  const sortTodoListItem = () => {
+    return sortItems(items, updateTodoList, setItems, setUpdateTodoList);
+  };
 
   const deleteTodoListItem = (id: number) => {
     setItems(
@@ -59,7 +64,7 @@ const App = (): JSX.Element => {
       <AppHeader toDo={todoCount} done={doneCount} />
       <div className="top-panel">
         <SearchPanel onSearchChange={searchChange} />
-        <ItemStatusFilter filter={filter} onFilterChange={filterChange} />
+        <ItemStatusFilter filter={filter} onFilterChange={filterChange} onSortTodoListItem={sortTodoListItem} />
       </div>
       <TodoList
         todos={visibleItem}

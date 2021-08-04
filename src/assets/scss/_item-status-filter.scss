@@ -1,3 +1,7 @@
+.btn-group {
+  display: flex;
+}
+
 .btn-panel {
   height: 30px;
   padding: 0 15px;
@@ -9,6 +13,10 @@
   &:hover {
     color: #fff;
     background-color: #0487ab;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 0 5px;
   }
 }
 

@@ -3,9 +3,22 @@
   align-items: center;
   justify-content: space-between;
   margin: 15px 0;
+  white-space: nowrap;
+  @media screen and (max-width: 480px) {
+    h1 {
+      font-size: 1.8em;
+    }
+  }
 }
 
 .app-header h2 {
   color: #808080;
   font-size: 1.2em;
+
+  @media screen and (max-width: 400px) {
+    font-size: 1em;
+    span {
+      display: block;
+    }
+  }
 }

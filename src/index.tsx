@@ -6,29 +6,14 @@ import TodoList from './components/todo-list';
 import ItemStatusFilter from './components/item-status-filter';
 import { TodoListItemProps } from './types/list-item';
 import ItemAddForm from './components/item-add-form';
+import { createTodoListItem, filters, search, toggleProperty } from './utils';
+import todoData from './constants/todo-data';
 import './assets/scss/app.scss';
 
-let idMax = 1;
-
 const App = (): JSX.Element => {
-  const createTodoListItem = (label: string) => {
-    const newItems = {
-      label,
-      important: false,
-      done: false,
-      id: (idMax += 1),
-    };
-    return newItems;
-  };
-
-  const todoData = [
-    createTodoListItem('Learn React'),
-    createTodoListItem('Make Awesome App'),
-    createTodoListItem('Drink coffee'),
-  ];
-
   const [items, setItems] = useState<TodoListItemProps[]>(todoData);
   const [tern, setTern] = useState('');
+  const [filter, setFilter] = useState('all');
 
   const deleteTodoListItem = (id: number) => {
     setItems(
@@ -44,21 +29,13 @@ const App = (): JSX.Element => {
     setItems(state => [...state, newItem]);
   };
 
-  const toggleProperty = (arr: TodoListItemProps[], id: number, propName: string) => {
-    const idx = arr.findIndex(item => item.id === id);
-    const oldItem = arr[idx];
-    const newItem = { ...oldItem, [propName]: !oldItem[propName as keyof typeof oldItem] };
-
-    return [...arr.slice(0, idx), newItem, ...arr.slice(idx + 1)];
-  };
-
-  const onToggleDone = (id: number) => {
+  const toggleDone = (id: number) => {
     setItems(() => {
       return toggleProperty(items, id, 'done');
     });
   };
 
-  const onToggleImportant = (id: number) => {
+  const toggleImportant = (id: number) => {
     setItems(() => {
       return toggleProperty(items, id, 'important');
     });
@@ -68,40 +45,27 @@ const App = (): JSX.Element => {
     setTern(term);
   };
 
+  const filterChange = (text: string) => {
+    setFilter(text);
+  };
+
   const doneCount = items.filter(item => item.done).length;
   const todoCount = items.length - doneCount;
 
-  const allTodoListItem = () => {
-    return items.filter(item => item);
-  };
-
-  const activeTodoListItem = () => {
-    return items.filter(item => item.done === false);
-  };
-
-  const search = (arr: TodoListItemProps[], text: string) => {
-    if (!text.length) {
-      return arr;
-    }
-    return arr.filter(item => {
-      return item.label.toLowerCase().indexOf(text.toLowerCase()) > -1;
-    });
-  };
-
-  const visibleItem = search(items, tern);
+  const visibleItem = filters(search(items, tern), filter);
 
   return (
     <div className="todo-app">
       <AppHeader toDo={todoCount} done={doneCount} />
       <div className="top-panel">
         <SearchPanel onSearchChange={searchChange} />
-        <ItemStatusFilter onActiveTodoListItem={activeTodoListItem} onAllTodoListItem={allTodoListItem} />
+        <ItemStatusFilter filter={filter} onFilterChange={filterChange} />
       </div>
       <TodoList
         todos={visibleItem}
         onDeleted={deleteTodoListItem}
-        onToggleDone={onToggleDone}
-        onToggleImportant={onToggleImportant}
+        onToggleDone={toggleDone}
+        onToggleImportant={toggleImportant}
       />
       <ItemAddForm onAddTodolistItem={addTodoListItem} />
     </div>

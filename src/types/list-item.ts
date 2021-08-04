@@ -26,3 +26,8 @@ export interface AddTodolistItemFuncProps {
 export type OnSearchChangeFuncProps = {
   onSearchChange: (term: string) => void;
 };
+
+export type ItemStatusFilterProps = {
+  filter: string;
+  onFilterChange: (text: string) => void;
+};

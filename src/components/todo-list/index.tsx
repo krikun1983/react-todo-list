@@ -7,6 +7,7 @@ const TodoList = ({ todos, onDeleted, onToggleDone, onToggleImportant }: TodoLis
     <ul className="list-group">
       {todos.map((item: TodoListItemProps) => {
         const { id } = item;
+
         return (
           <li className="list-group-item" key={id}>
             <TodoListItem

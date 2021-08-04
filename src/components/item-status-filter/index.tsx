@@ -1,24 +1,20 @@
 import React from 'react';
+import btnsFilter from '../../constants/btns-filter';
+import { ItemStatusFilterProps } from '../../types/list-item';
 
-type ItemStatusFilterProps = {
-  onActiveTodoListItem: () => void;
-  onAllTodoListItem: () => void;
-};
+const ItemStatusFilter = ({ filter, onFilterChange }: ItemStatusFilterProps): JSX.Element => {
+  const buttons = btnsFilter.map(({ name, label }) => {
+    const isActive = filter === name;
+    const clazz = isActive ? 'btn-info' : '';
 
-const ItemStatusFilter = ({ onActiveTodoListItem, onAllTodoListItem }: ItemStatusFilterProps): JSX.Element => {
-  return (
-    <div className="btn-group">
-      <button type="button" className="btn-panel btn-info" onClick={onAllTodoListItem}>
-        All
+    return (
+      <button key={name} type="button" className={`btn-panel ${clazz}`} onClick={() => onFilterChange(name)}>
+        {label}
       </button>
-      <button type="button" className="btn-panel btn-outline-secondary" onClick={onActiveTodoListItem}>
-        Active
-      </button>
-      <button type="button" className="btn-panel btn-outline-secondary">
-        Done
-      </button>
-    </div>
-  );
+    );
+  });
+
+  return <div className="btn-group">{buttons}</div>;
 };
 
 export default ItemStatusFilter;

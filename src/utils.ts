@@ -46,7 +46,7 @@ export const toggleProperty = (arr: TodoListItemProps[], id: number, propName: s
 export const sortItems = (
   array: TodoListItemProps[],
   stateTodoList: boolean,
-  arrSetState: Dispatch<SetStateAction<TodoListItemProps[]>>,
+  arraySetState: Dispatch<SetStateAction<TodoListItemProps[]>>,
   setStateTodoList: Dispatch<SetStateAction<boolean>>,
 ): void => {
   const newArray = array;
@@ -63,7 +63,7 @@ export const sortItems = (
       }
       return 0;
     });
-    arrSetState(newArray);
+    arraySetState(newArray);
   } else {
     newArray.sort((item, item2) => {
       const labelA = item.label.toLowerCase();
@@ -76,7 +76,7 @@ export const sortItems = (
       }
       return 0;
     });
-    arrSetState(newArray);
+    arraySetState(newArray);
   }
   setStateTodoList(!stateTodoList);
 };

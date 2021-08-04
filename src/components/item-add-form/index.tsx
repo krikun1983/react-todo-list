@@ -1,10 +1,14 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
+import maxItemLettersForm from '../../constants/max-letters-input';
 import { AddTodolistItemFuncProps } from '../../types/list-item';
 
 const ItemAddForm = ({ onAddTodolistItem }: AddTodolistItemFuncProps): JSX.Element => {
   const [label, setText] = useState('');
 
   const onLabelChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length >= maxItemLettersForm) {
+      return;
+    }
     setText(e.target.value);
   };
 

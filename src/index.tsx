@@ -29,6 +29,9 @@ const App = (): JSX.Element => {
   };
 
   const addTodoListItem = (text: string) => {
+    if (!text) {
+      return;
+    }
     const newItem = createTodoListItem(text);
 
     setItems(state => [...state, newItem]);
